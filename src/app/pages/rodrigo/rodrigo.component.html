@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="header">
+    <h1>Rodrigo</h1>
+  </div>
+
+  <div id="messages" class="messages">
+    @for (message of messages; track $index) {
+    <div [class]="[message.sender, message.status, 'sent','card']">
+      <h5>{{ message.sender }}</h5>
+      <p [class]="message.sender">{{ message.text }}</p>
+      @switch (message.type) {
+
+      @case ( 'form') {
+      <form (ngSubmit)="submitForm(message.numberInput!, $index)">
+        <label for="emails">Insira os e-mails (separados por vírgula):</label>
+        <input type="text" id="emails" [(ngModel)]="message.emailList" name="emails"
+          placeholder="exemplo@email.com, outro@email.com" required />
+
+        <label for="subject">Assunto:</label>
+        <input type="text" id="subject" [(ngModel)]="message.subject" name="subject"
+          placeholder="Digite o assunto do e-mail" required />
+
+        <label for="body">Corpo do E-mail:</label>
+        <textarea id="body" [(ngModel)]="message.body" name="body" placeholder="Digite o conteúdo do e-mail"
+          required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+      }
+
+      @case ('pdf') {
+      <button class="download-button" (click)="downloadFile(message.url!)">
+        Baixar
+      </button>
+      }
+
+      @case ('merge_pdf') {
+      <div class="box_input">
+        <label for="merge_input_file">
+          <span>Escolha os arquivos PDF</span>
+        </label>
+        <input id="merge_input_file" type="file" (change)="onFileChange($event)" multiple>
+        <input type="text" [(ngModel)]="filename" placeholder="Nome do arquivo resultante">
+        <button (click)="mergePdfs()">Mesclar PDFs</button>
+      </div>
+      }
+
+      @case ('html_pdf') {
+      <div class="box_input">
+        <label for="html_pdf_input">
+          <span>Escolha o arquivo html</span>
+        </label>
+        <input id="html_pdf_input" type="file" (change)="onSingleFileChange($event, 'html_pdf')">
+        <input type="text" [(ngModel)]="filename" placeholder="Nome do arquivo resultante">
+        <button (click)="convertHtmlToPdf()">Converter HTML para PDF</button>
+      </div>
+      }
+
+      @case ('text_pdf') {
+      <div class="box_input">
+        <label for="pdf_text_input" class="file_label">
+          <span>Escolha o arquivo PDF ou de imagem</span>
+          <i class="bi bi-file-earmark-text"></i>
+        </label>
+        <input id="pdf_text_input" type="file" (change)="onSingleFileChange($event, 'pdf_text')">
+        <button (click)="processPdf()">Processar texto</button>
+      </div>
+      }
+      }
+    </div>
+    }
+    @if (loading == true) {
+      <app-loading></app-loading>
+    }
+  </div>
+  
+  <div class="input">
+    <input [(ngModel)]="userInput" placeholder="Digite sua mensagem..." type="text">
+    <button (click)="sendMessage()">Enviar</button>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="header">
+    <h1>Helena</h1>
+  </div>
+
+  <div class="messages" #messagesContainer>
+    @for (message of messages; track $index) {
+    <div [class]="[message.sender, message.status, 'sent', 'card']">
+      <h5>{{ message.sender }}</h5>
+      <p [class]="message.sender">{{ message.text }}</p>
+      @if (message.music || message.video) {
+      <div class="buttons">
+        @if (message.music && !message.music.playing) {
+        <button (click)="playAudio(message.music.url)" class="play">
+          Play
+        </button>
+        }@else {
+        <button (click)="pauseAudio()" class="pause">
+          Pause
+        </button>
+        }
+        @if (message.music?.url) {}
+        <button (click)="downloadFile(message.music!.url)" class="download-button">
+          Baixar
+        </button>
+      </div>
+      }
+    </div>
+    }
+    @if (loading == true) {
+      <app-loading></app-loading>
+    }
+  </div>
+
+
+  <div class="input">
+    <input [(ngModel)]="userInput" placeholder="Digite sua mensagem..." type="text">
+    <button (click)="sendMessage()">Enviar</button>
+  </div>
+
+  <audio src="" id="audio"></audio>
+</div>

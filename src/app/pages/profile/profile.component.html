@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="header">
+    <h1>Perfil</h1>
+  </div>
+
+  <div class="profile_info">
+    <div class="photo">
+      <img [src]="baseUrl + '/' + user.photos[0]" alt="Foto de perfil" class="avatar">
+    </div>
+    <div class="inputs">
+      <input type="text" [(ngModel)]="user.name" name="name" required placeholder="Nome">
+      <input type="email" [(ngModel)]="user.email" name="email" placeholder="Email">
+      <div class="btns">
+        <label for="photo" class="chip">
+          <div class="icon">
+            <i class="bi bi-camera-fill"></i>
+          </div>
+          <span>Adicionar foto</span>
+        </label>
+        <label for="voice" class="chip">
+          <div class="icon">
+            <i class="bi bi-mic-fill"></i>
+          </div>
+          <span>Adicionar áudio</span>
+        </label>
+      </div>
+      <input style="display: none;" type="file" id="photo" (change)="addFiles($event, 'photo')" multiple />
+      <input style="display: none;" type="file" id="voice" (change)="addFiles($event, 'voice')" multiple />
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="tertiary" (click)="updateUser()">
+      <span class="icon cloud-upload"></span> Atualizar
+    </button>
+    <button class="danger" (click)="setOpenAlertDelete(true)">
+      <span class="icon trash"></span> Excluir
+    </button>
+  </div>
+
+  <div class="photos">
+    @if (user.photos) {
+    <h3>Suas Fotos</h3>
+    <div class="grid">
+      @for (photo of user.photos; track $index) {
+      <div class="card" (click)="setOpenAlert(true, photo)">
+        <img [src]="baseUrl + '/' + photo" alt="foto" />
+      </div>
+      }
+    </div>
+    }
+  </div>
+  
+  @if (isAlertDeleteOpen) {
+  <div class="alert">
+    <h4>Ação irreversível!!!!</h4>
+    <p>Deseja mesmo excluir seu perfil?</p>
+    <div class="alert-buttons">
+      <button (click)="deleteUser()">Sim</button>
+      <button (click)="setOpenAlertDelete(false)">Não</button>
+    </div>
+  </div>
+  }
+
+  @if (isAlertOpen) {
+  <div class="alert">
+    <h4>Atenção!</h4>
+    <p>Deseja alterar sua foto de perfil?</p>
+    <div class="alert-buttons">
+      <button (click)="alterPhoto(alterPath)">Sim</button>
+      <button (click)="setOpenAlert(false, '')">Não</button>
+    </div>
+  </div>
+  }
+  @if (isToastOpen) {
+  <div class="toast">
+    <p>{{ toastMessage }}</p>
+  </div>
+  }
+</div>

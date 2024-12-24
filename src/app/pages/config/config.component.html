@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="header">
+    <h1>Configurações</h1>
+  </div>
+
+  <div class="settings">
+    <section>
+      <h3>Conversas</h3>
+      <div class="content">
+        <div class="box">
+          <span class="title">Resposta de voz</span>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="config.voice_response">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3>Servidor</h3>
+      <div class="content">
+        <div class="box">
+          <input type="text" [(ngModel)]="config.rota" placeholder="Digite o texto" />
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="buttons">
+    <button class="save-button" (click)="confirm()">Salvar</button>
+  </div>
+</div>

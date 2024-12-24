@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="header">
+    <h1>Usuários cadastrados</h1>
+  </div>
+
+  <div class="content">
+    <!-- Refresher: aqui usamos um botão para simular a atualização -->
+    <button class="refresh-button" (click)="handleRefresh($event)">
+      Atualizar
+      <i class="bi bi-arrow-clockwise"></i>
+    </button>
+
+    <!-- Exibindo mensagem se existir -->
+    @if (message) {
+    <div class="message">
+      <div class="message-card">
+        <h2>{{ message }}</h2>
+      </div>
+    </div>
+    }
+
+    <!-- Lista de usuários -->
+    <div class="list">
+      @for (user of userList; track $index) {
+      <div class="user-card">
+        <div class="user-avatar">
+          <img [src]="baseUrl + '/' + user.photos[0]" alt="Foto de {{ user.name }}" />
+        </div>
+        <div class="user-name">
+          <span>{{ user.name }}</span>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,1 +1,494 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+	//border: 1px solid wheat;
+	font-family: "Nunito", serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	background-color: var(--color-dark);
+	overflow: hidden;
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	padding: 20px;
+	box-sizing: border-box;
+	overflow-x: hidden;
+	color: var(--color-dark-contrast);
+
+	h1 {
+		font-size: 24px;
+	}
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 20px;
+		color: var(--color-dark-contrast);
+	}
+
+	.messages {
+		width: 100%;
+		margin-top: 20px;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+
+		.Rodrigo {
+			max-width: 60%;
+			align-self: flex-start;
+			min-width: 30%;
+
+			h5 {
+				font-size: 18px;
+				font-weight: bold;
+				text-align: start;
+			}
+		}
+
+		.Helena {
+			max-width: 60%;
+			align-self: flex-start;
+			min-width: 30%;
+
+
+			h5 {
+				font-size: 18px;
+				font-weight: bold;
+				text-align: start;
+			}
+		}
+
+		.Você {
+			max-width: 60%;
+			align-self: flex-end;
+			min-width: 30%;
+
+
+			h5 {
+				font-size: 18px;
+				font-weight: bold;
+				text-align: end;
+			}
+		}
+
+		.card {
+			background-color: var(--color-dark-tint);
+			color: var(--color-dark-contrast);
+			padding: 10px;
+			border-radius: 8px;
+			margin-bottom: 10px;
+			box-shadow: var(--card-shadow);
+
+			p {
+				font-size: 16px;
+				margin: 10px 0;
+			}
+
+			form {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 10px;
+				padding: 10px 5px;
+
+				label {
+					width: 100%;
+					text-align: start;
+				}
+
+				input {
+					width: 100%;
+				}
+
+				textarea {
+					width: 100%;
+				}
+
+			}
+
+			.box_input {
+				width: 400px;
+				max-width: 100%;
+				margin: 10px 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 20px;
+
+				label {
+					display: block;
+					margin-bottom: 5px;
+					font-weight: bold;
+				}
+
+				input[type="file"],
+				input[type="text"] {
+					width: 100%;
+					padding: 8px;
+					margin: 5px 0;
+					border-radius: 5px;
+					border: 1px solid #ccc;
+				}
+
+				button {
+					padding: 10px 20px;
+					border-radius: 5px;
+					background-color: var(--color-tertiary);
+					color: white;
+					border: none;
+					cursor: pointer;
+				}
+			}
+
+			.buttons {
+				display: flex;
+				gap: 10px;
+
+				.play {}
+
+				.pause {}
+
+				button {
+					padding: 10px 20px;
+					border-radius: 5px;
+					background-color: #007bff;
+					color: white;
+					border: none;
+					cursor: pointer;
+				}
+			}
+
+			button {
+				background: var(--color-secondary);
+				color: var(--color-secondary-contrast);
+				padding: 10px 20px;
+				border: none;
+				border-radius: 5px;
+				font-size: 16px;
+				cursor: pointer;
+				transition: background .2s ease-in-out;
+
+				&:hover {
+					background: var(--color-secondary-shade);
+				}
+			}
+		}
+	}
+}
+
+.download-button {
+	background-color: var(--color-secondary);
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.input {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 20px;
+
+	input {
+		width: 80%;
+		padding: 10px;
+		border-radius: 5px;
+		border: 1px solid #ddd;
+		font-size: 16px;
+	}
+
+	button {
+		background: var(--color-secondary);
+		color: var(--color-secondary-contrast);
+		padding: 10px 20px;
+		border: none;
+		border-radius: 5px;
+		font-size: 16px;
+		cursor: pointer;
+		transition: background .2s ease-in-out;
+
+		&:hover {
+			background: var(--color-secondary-shade);
+		}
+	}
+
+
+}
+
+input,
+textarea {
+	padding: 10px 20px;
+	background-color: var(--color-dark);
+	color: var(--color-dark-contrast);
+	border-radius: 10px;
+	border: 2px solid var(--color-dark-tint);
+	box-shadow: var(--input-shadow);
+}
+
+input[type='file'] {
+	display: none;
+}
+
+button {
+	cursor: pointer;
+	transition: background ease-in-out .2s;
+}
+
+.file_label {
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--color-dark);
+
+	i {
+		font-size: 20px;
+		margin-left: 10px;
+	}
+}
+
+audio {
+	display: none;
+}
+
+/* Estilo para navegadores baseados em WebKit */
+::-webkit-scrollbar {
+	width: 8px;
+	/* Largura da scrollbar */
+	height: 8px;
+	/* Altura da scrollbar (para scroll horizontal) */
+}
+
+::-webkit-scrollbar-track {
+	background: #f0f0f0;
+	/* Cor do fundo da scrollbar */
+	border-radius: 4px;
+	/* Bordas arredondadas */
+}
+
+::-webkit-scrollbar-thumb {
+	background: #cccccc;
+	/* Cor do "polegar" (barra de rolagem) */
+	border-radius: 4px;
+	/* Bordas arredondadas */
+	border: 2px solid #f0f0f0;
+	/* Espaço entre o polegar e o fundo */
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #0a0909;
+	/* Cor ao passar o mouse */
+}
+
+/* Para navegadores compatíveis com scrollbar-color */
+* {
+	scrollbar-width: thin;
+	/* Scrollbar fina */
+	scrollbar-color: #272727 #202020;
+	/* Polegar e trilha */
+}
+
+@media(max-width:640px) {
+	.container {
+		height: 100vh;
+		padding: 10px;
+
+		.messages {
+			overflow-y: scroll;
+			height: 80vh;
+			padding-bottom: 60px;
+
+			.Rodrigo {
+				max-width: 90%;
+			}
+
+			.Helena {
+				max-width: 90%;
+			}
+
+			.Você {
+				max-width: 90%;
+			}
+
+			.card {
+
+				.box_input {
+					width: 400px;
+					margin: 10px 0;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					gap: 20px;
+
+					label {
+						display: block;
+						margin-bottom: 5px;
+						font-weight: bold;
+					}
+
+					button {
+						padding: 10px 20px;
+						border-radius: 5px;
+						background-color: var(--color-tertiary);
+						color: white;
+						border: none;
+						cursor: pointer;
+					}
+				}
+
+				.buttons {
+					display: flex;
+					gap: 10px;
+
+					.play {}
+
+					.pause {}
+
+					button {
+						padding: 10px 20px;
+						border-radius: 5px;
+						background-color: #007bff;
+						color: white;
+						border: none;
+						cursor: pointer;
+					}
+				}
+
+				button {
+					color: var(--color-secondary-contrast);
+					background-color: var(--color-secondary);
+
+					&:hover {
+						background-color: var(--color-secondary-shade);
+					}
+				}
+			}
+		}
+	}
+
+	.download-button {
+		background-color: var(--color-secondary);
+		color: white;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	.input {
+		position: absolute;
+		bottom: 40px;
+		left: 0;
+		width: 100%;
+		padding: 20px;
+		display: flex;
+		justify-content: center;
+		gap: 10px;
+		margin-top: 20px;
+	}
+
+	input {
+		padding: 10px 20px;
+		background-color: var(--color-dark);
+		color: var(--color-dark-contrast);
+		border-radius: 10px;
+		border: 2px solid var(--color-dark-tint);
+		box-shadow: var(--input-shadow);
+	}
+
+	input[type='file'] {
+		display: none;
+	}
+
+	button {
+		cursor: pointer;
+		transition: background ease-in-out .2s;
+	}
+
+	.file_label {
+		padding: 10px;
+		font-size: 16px;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		background-color: var(--color-dark);
+
+		i {
+			font-size: 20px;
+			margin-left: 10px;
+		}
+	}
+}
+
+:root {
+	--color-primary: #f5295c;
+	--color-primary-contrast: #000000;
+	--color-primary-shade: #d82451;
+	--color-primary-tint: #f63e6c;
+
+	--color-secondary: #13e447;
+	--color-secondary-contrast: #000000;
+	--color-secondary-shade: #0eb136;
+	--color-secondary-tint: #4bff1a;
+
+	--color-tertiary: #007bff;
+	--color-tertiary-contrast: #ffffff;
+	--color-tertiary-shade: #0062ca;
+	--color-tertiary-tint: #1b84f5;
+
+	--color-success: #2dd55b;
+	--color-success-contrast: #000000;
+	--color-success-shade: #20963f;
+	--color-success-tint: #42d96b;
+
+	--color-warning: #ffc409;
+	--color-warning-contrast: #000000;
+	--color-warning-shade: #e0ac08;
+	--color-warning-tint: #ffca22;
+
+	--color-danger: #c5000f;
+	--color-danger-contrast: #ffffff;
+	--color-danger-shade: #ad000d;
+	--color-danger-tint: #cb1a27;
+
+	--color-light: #f6f8fc;
+	--color-light-contrast: #000000;
+	--color-light-shade: #d8dade;
+	--color-light-tint: #f7f9fc;
+
+	--color-medium: #202020;
+	--color-medium-contrast: #ffffff;
+	--color-medium-shade: #161616;
+	--color-medium-tint: #2c2c2c;
+
+	--color-dark: #161616;
+	--color-dark-contrast: #cfcfcf;
+	--color-dark-shade: #0a0a0a;
+	--color-dark-tint: #1a1a1a;
+
+	--box-shadow: var(--color-dark-shade) 0px 5px 15px, inset var(--color-dark-tint) 0px 10px 55px -8px;
+	--input-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+	--card-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}

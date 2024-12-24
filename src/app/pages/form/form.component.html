@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="header">
+      <h1>Cadastro/Login</h1>
+    </div>
+  
+    <div class="content">
+      <form (ngSubmit)="login()">
+        <div class="input-group">
+          <label for="name">Nome</label>
+          <input [(ngModel)]="name" name="name" required type="text" id="name" />
+        </div>
+        <div class="input-group">
+          <label for="password">Senha</label>
+          <input [(ngModel)]="password" name="password" type="password" required id="password" />
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input [(ngModel)]="email" name="email" type="email" id="email" />
+        </div>
+        <button type="submit" class="submit-button">Login</button>
+      </form>
+  
+      <button class="register-button" (click)="register()">Cadastrar</button>
+    </div>
+  </div>
+  

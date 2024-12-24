@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="header">
+    <h1>Arquivos</h1>
+  </div>
+
+  <div class="content">
+    <div class="sub-header">
+      <button [class]="listButton" (click)="changeFilesIn('list')">
+        <i class="bi bi-list-task"></i>
+      </button>
+      <button [class]="girdButton" (click)="changeFilesIn('grid')">
+        <i class="bi bi-grid-3x3-gap-fill"></i>
+      </button>
+    </div>
+
+    <div [class]="[filesIn, 'files']">
+      @if (files) {
+      @for (file of files; track $index) {
+      <div class="file-item">
+        <div class="box">
+          <div class="icon">
+            <i class="bi bi-file-earmark-pdf-fill"></i>
+          </div>
+          <div class="file-info">
+            <h3>{{ file.name }}</h3>
+            <p>Tipo: {{ file.type }}</p>
+          </div>
+        </div>
+        <button class="download-button" (click)="openFile(file.name)">
+          Baixar
+        </button>
+      </div>
+      }
+      }
+      <!-- Mensagem caso não haja arquivos -->
+      <ng-template #noFiles>
+        @if (!loading) {
+        <div>Nenhum arquivo encontrado.</div>
+        }@else {
+        <div class="spinner">Carregando...</div>
+        }
+      </ng-template>
+    </div>
+  </div>
+</div>

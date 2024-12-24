@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="header">
+    <h1>Downloads</h1>
+  </div>
+
+  <div class="content">
+    <div class="sub-header">
+      <button [class]="listButton" (click)="changeFilesIn('list')">
+        <i class="bi bi-list-task"></i>
+      </button>
+      <button [class]="girdButton" (click)="changeFilesIn('grid')">
+        <i class="bi bi-grid-3x3-gap-fill"></i>
+      </button>
+    </div>
+    <div [class]="[filesIn, 'files']">
+
+      @if (musics.length) {
+      @for (music of musics; track $index) {
+      <div class="file-item">
+        <div class="box">
+          <div class="icon">
+            <i class="bi bi-file-music-fill"></i>
+          </div>
+          <div class="file-info">
+            <h3>{{ music.url }}</h3>
+          </div>
+        </div>
+        <div class="buttons">
+          @if (!music.playing) {
+          <button (click)="playAudio(music.url)">
+            <i class="bi bi-play-fill"></i>
+          </button>
+          } @else {
+          <button (click)="pauseAudio()">
+            <i class="bi bi-pause-fill"></i>
+          </button>
+          }
+          <button (click)="downloadMusic(music.url)">
+            <i class="bi bi-download"></i>
+          </button>
+        </div>
+      </div>
+      }
+      }
+      @if (videos.length) {
+      @for (video of videos; track $index) {
+      <div class="file-item">
+        <div class="box">
+          <div class="icon">
+            <i class="bi bi-film"></i>
+          </div>
+          <div class="file-info">
+            <h3>{{ video }}</h3>
+          </div>
+        </div>
+        <div class="buttons">
+          <button class="download-button" (click)="downloadVideo(video)">
+            <i class="bi bi-download"></i>
+          </button>
+        </div>
+      </div>
+      }
+      }
+    </div>
+  </div>
+
+  <!-- Elemento de áudio -->
+  <audio id="audio" controls></audio>
+</div>

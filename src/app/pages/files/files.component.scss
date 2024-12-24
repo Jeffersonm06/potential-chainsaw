@@ -1,0 +1,130 @@
+.container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .content {
+    margin-top: 20px;
+
+
+    .sub-header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 20px;
+      padding: 10px;
+      color: var(--color-dark-contrast);
+      margin-bottom: 20px;
+
+      button {
+        font-size: 20px;
+        padding: 10px 15px;
+        background: var(--color-dark);
+        color: var(--color-dark-contrast);
+        border: 2px solid var(--color-dark-tint);
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+        cursor: pointer;
+      }
+
+      button.active{
+        background: var(--color-dark-contrast);
+        color: var(--color-dark);
+      }
+    }
+
+    .files{
+      overflow-y: auto;
+      height: 74vh;
+    }
+
+    .file-item {
+      background: var(--color-dark-tint);
+      color: var(--color-dark-contrast);
+      border: 1px solid #ddd;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+
+      .box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .icon {
+          font-size: 40px;
+        }
+
+        .file-info {
+          font-size: 16px;
+          justify-self: flex-start;
+        }
+      }
+
+      .download-button {
+        background-color: #007bff;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+    }
+
+    .spinner {
+      font-size: 20px;
+      color: #007bff;
+    }
+
+    
+    .grid{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+
+
+      .file-item {
+        position: relative;
+        width: 100px;
+        height: 140px;
+        margin-bottom: 20px;
+  
+  
+        .box {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+  
+          .icon {
+            font-size: 40px;
+          }
+  
+          .file-info {
+            width: 100%;
+            overflow: hidden;
+            font-size: 12px;
+            font-weight: 400;
+            justify-self: flex-start;
+
+            h3{
+              height: 20px;
+              overflow: hidden;
+            }
+          }
+        }
+
+        .download-button {
+          position: absolute;
+          bottom: -40px;
+        }
+      }
+    }
+  }
+}
