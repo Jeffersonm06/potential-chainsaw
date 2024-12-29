@@ -9,16 +9,19 @@ import { ManualComponent } from './pages/manual/manual.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { UsersComponent } from './pages/users/users.component';
 import { CommandsComponent } from './pages/commands/commands.component';
+import { authGuard } from './auth.guard';
+import { PlayerComponent } from './pages/player/player.component';
 
 export const routes: Routes = [
-    { path: '', component: HelenaComponent },
-    { path: 'rodrigo', component: RodrigoComponent },
+    { path: '', component: HelenaComponent, canActivate: [authGuard] },
+    { path: 'rodrigo', component: RodrigoComponent, canActivate: [authGuard] },
     { path: 'config', component: ConfigComponent },
-    { path: 'files', component: FilesComponent },
+    { path: 'files', component: FilesComponent, canActivate: [authGuard] },
     { path: 'form', component: FormComponent },
-    { path: 'commands', component: CommandsComponent },
-    { path: 'downloads', component: DownloadsComponent },
-    { path: 'manual', component: ManualComponent },
-    { path: 'profile', component: ProfileComponent },
-    { path: 'users', component: UsersComponent },
+    { path: 'commands', component: CommandsComponent, canActivate: [authGuard] },
+    { path: 'downloads', component: DownloadsComponent, canActivate: [authGuard] },
+    { path: 'manual', component: ManualComponent, canActivate: [authGuard] },
+    { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
+    { path: 'users', component: UsersComponent, canActivate: [authGuard] },
+    { path: 'player', component: PlayerComponent, canActivate: [authGuard] },
 ];

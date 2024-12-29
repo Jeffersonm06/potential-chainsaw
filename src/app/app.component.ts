@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { RouterModule, Routes } from '@angular/router';
-import { DataService } from './pages/services/data.service';
+import { DataService } from './services/data.service';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, RouterModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [RouterOutlet, RouterModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit{
   title = 'MyHome';
@@ -23,6 +22,7 @@ export class AppComponent implements OnInit{
     { link: 'config', name: 'Config', icon: 'bi bi-gear-fill' },
     { link: 'files', name: 'Files', icon: 'bi bi-file-earmark-medical-fill' },
     { link: 'downloads', name: 'Downloads', icon: 'bi bi-download' },
+    { link: 'player', name: 'Player', icon: 'bi bi-collection-play-fill'},
     { link: 'manual', name: 'Manual', icon: 'bi bi-journal-text' },
     { link: 'commands', name: 'Comandos', icon: 'bi bi-terminal-fill' },
     { link: 'profile', name: 'Profile', icon: 'bi bi-person-circle' },
@@ -32,16 +32,18 @@ export class AppComponent implements OnInit{
   currentPage: string = this.pages[0].name;
 
   constructor(
-    private data: DataService
   ) {
   }
 
   ngOnInit(): void {
-    const width = window.innerWidth;
-    if(width < 640){
-      this.toggleMenu()
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      if (width < 640) {
+        this.toggleMenu();
+      }
     }
   }
+  
 
   toggleMenu() {
     if (this.isOpen == true) {
@@ -54,8 +56,6 @@ export class AppComponent implements OnInit{
       this.page = this.page;
       this.isOpen = true;
     }
-    console.log(this.menu);
-    console.log(this.page);
   }
 
   selectPage(page: string) {

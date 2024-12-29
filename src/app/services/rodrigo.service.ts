@@ -13,7 +13,7 @@ export class RodrigoService {
   constructor(
     private http: HttpClient,
     private data: DataService) {
-    this.baseUrl = this.data.baseUrl + '/rodrigo';
+    this.baseUrl = this.data.baseUrl;
   }
 
   // Envia uma mensagem para o servidor

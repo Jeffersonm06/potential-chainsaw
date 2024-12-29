@@ -1,17 +1,17 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { RodrigoService } from '../services/rodrigo.service';
-import { DataService } from '../services/data.service';
+import { RodrigoService } from '../../services/rodrigo.service';
+import { DataService } from '../../services/data.service';
 import { User } from '../interfaces/user';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoadingComponent } from '../../components/loading/loading.component';
 
 @Component({
-  selector: 'app-rodrigo',
-  standalone: true,
-  imports: [FormsModule, CommonModule, LoadingComponent],
-  templateUrl: './rodrigo.component.html',
-  styleUrl: './rodrigo.component.scss'
+    selector: 'app-rodrigo',
+    standalone: true,
+    imports: [FormsModule, CommonModule, LoadingComponent],
+    templateUrl: './rodrigo.component.html',
+    styleUrl: './rodrigo.component.scss'
 })
 export class RodrigoComponent implements OnInit {
 

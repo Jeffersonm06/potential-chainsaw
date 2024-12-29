@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { RodrigoService } from '../services/rodrigo.service';
-import { DataService } from '../services/data.service';
+import { RodrigoService } from '../../services/rodrigo.service';
+import { DataService } from '../../services/data.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-files',
-  standalone: true,
-  imports: [],
-  templateUrl: './files.component.html',
-  styleUrl: './files.component.scss'
+    selector: 'app-files',
+    standalone: true,
+    imports: [],
+    templateUrl: './files.component.html',
+    styleUrl: './files.component.scss'
 })
 export class FilesComponent implements OnInit {
 

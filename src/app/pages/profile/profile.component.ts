@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { DataService } from '../services/data.service';
+import { DataService } from '../../services/data.service';
 import { User } from '../interfaces/user';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,13 +18,7 @@ export class ProfileComponent implements OnInit {
   baseUrl: string;
 
   userId: number = 0;
-  user: User = {
-    id: 0,
-    name: '',
-    email: '',
-    photos: [],
-    voices: []
-  };
+  user: User;
   profilePic: string = '';
 
   public alertButtons = [
@@ -68,28 +63,19 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private data: DataService,
-  ) { 
+    private auth: AuthService
+  ) {
     this.baseUrl = this.data.baseUrl;
+    this.user = this.auth.user;
   }
 
   ngOnInit() {
-    const userString = localStorage.getItem('user');
-    if (userString) {
-      const user = JSON.parse(userString);
-      this.userId = parseInt(user.id, 10);
-      if (isNaN(this.userId)) {
-        this.router.navigate(['/form']);
-      } else {
-        this.getUserInfo();
-      }
-    } else {
-      this.router.navigate(['/form']);
-    }
+
   }
 
   // Obter informações do usuário logado
   getUserInfo() {
-    this.userService.getUserInfo(this.userId).subscribe(
+    this.auth.getUserInfo(this.userId).subscribe(
       (user) => {
         this.user = user;
         console.log('Informações do usuário carregadas:', this.user);

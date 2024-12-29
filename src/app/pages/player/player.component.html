@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="header">
+        <h1>Player</h1>
+    </div>
+
+    <div class="content">
+        <div class="content">
+            <div class="music-player">
+                <h2>Músicas</h2>
+                <ul>
+                    @for(music of musics; track $index){
+                    <li>
+                        {{ music.url }}
+                        <button (click)="playMusic(music.url)">Tocar</button>
+                    </li>
+                    }
+                </ul>
+                <audio id="audio" type="audio/mp3"></audio>
+            </div>
+
+            <div class="video-player">
+                <h2>Vídeos</h2>
+                <ul>
+                    @for(video of videos; track $index){
+                    <li>
+                        {{ video.url }}
+                        <button (click)="playVideo(video.url)">Tocar</button>
+                    </li>
+                    }
+                </ul>
+                <video id="video" controls width="600" height="300px">
+                    <source [src]="currentVideo.url" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+
+            </div>
+        </div>
+    </div>
+</div>

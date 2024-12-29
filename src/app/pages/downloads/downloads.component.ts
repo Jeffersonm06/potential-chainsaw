@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { DownloadsService } from '../services/downloads.service';
-import { DataService } from '../services/data.service';
+import { DownloadsService } from '../../services/downloads.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
-  selector: 'app-downloads',
-  standalone: true,
-  imports: [],
-  templateUrl: './downloads.component.html',
-  styleUrl: './downloads.component.scss'
+    selector: 'app-downloads',
+    standalone: true,
+    imports: [],
+    templateUrl: './downloads.component.html',
+    styleUrl: './downloads.component.scss'
 })
 export class DownloadsComponent implements OnInit {
 

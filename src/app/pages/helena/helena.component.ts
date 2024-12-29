@@ -1,21 +1,22 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { HelenaService } from '../services/helena.service';
-import { DownloadsService } from '../services/downloads.service';
-import { DataService } from '../services/data.service';
+import { HelenaService } from '../../services/helena.service';
+import { DownloadsService } from '../../services/downloads.service';
+import { DataService } from '../../services/data.service';
 import { User } from '../interfaces/user';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoadingComponent } from '../../components/loading/loading.component';
 
 @Component({
-  selector: 'app-helena',
-  standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-    LoadingComponent],
-  templateUrl: './helena.component.html',
-  styleUrl: './helena.component.scss'
+    selector: 'app-helena',
+    standalone: true,
+    imports: [
+        FormsModule,
+        CommonModule,
+        LoadingComponent
+    ],
+    templateUrl: './helena.component.html',
+    styleUrl: './helena.component.scss'
 })
 export class HelenaComponent implements OnInit {
   @ViewChild('messagesContainer', { static: false }) messagesContainer!: ElementRef;

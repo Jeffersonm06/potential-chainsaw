@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
-import { DataService } from '../services/data.service';
+import { UserService } from '../../services/user.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-users',
@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
     private data: DataService,
   ) {
     this.baseUrl = this.data.baseUrl;
-   }
+  }
 
   ngOnInit() {
     this.listarUsuarios();

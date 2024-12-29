@@ -10,7 +10,7 @@ export class UserService {
   baseUrl:string; 
   constructor(
     private http: HttpClient,
-    private data: DataService
+    private data: DataService,
   ) { 
     this.baseUrl = this.data.baseUrl;
   }
@@ -21,18 +21,7 @@ export class UserService {
     return this.http.post(`${this.baseUrl}/users/register`, userData);
   }
 
-  // Login de usuário
-  loginUser(name: string, password: string): Observable<any> {
-    const credentials = { name, password };
-    return this.http.post(`${this.baseUrl}/users/login`, credentials);
-  }
-
-  // Exibir informações do usuário
-  getUserInfo(userId: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/users/${userId}`);
-  }
-
-  // Atualizar informações do usuário
+   // Atualizar informações do usuário
   updateUser(userId: number, formData: FormData): Observable<any> {
     return this.http.put(`${this.baseUrl}/users/${userId}`, formData);
   }

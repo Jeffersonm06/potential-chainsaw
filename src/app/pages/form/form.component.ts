@@ -1,21 +1,26 @@
 import { Component } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-form',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.scss'
+    selector: 'app-form',
+    standalone: true,
+    imports: [FormsModule],
+    templateUrl: './form.component.html',
+    styleUrl: './form.component.scss'
 })
 export class FormComponent {
   name: string = '';
   password: string = '';
   email: string = '';
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+     private router: Router,
+     private auth: AuthService 
+    ) {}
 
   // Método de registro com Observable
   register() {
@@ -31,7 +36,7 @@ export class FormComponent {
 
   // Método de login com Observable
   login() {
-    this.userService.loginUser(this.name, this.password).subscribe({
+    this.auth.loginUser(this.name, this.password).subscribe({
       next: (response) => {
         console.log('Usuário logado com sucesso', response);
         localStorage.setItem('user', JSON.stringify(response.user)); // Serializar o objeto para string

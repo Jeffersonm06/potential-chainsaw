@@ -13,7 +13,7 @@ export class HelenaService {
     private http: HttpClient, 
     private data: DataService
   ) {
-    this.baseUrl = this.data.baseUrl + '/helena';
+    this.baseUrl = this.data.baseUrl;
     console.log(this.baseUrl)
   }
 
